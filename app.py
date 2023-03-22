@@ -2,12 +2,14 @@ from flask import Flask, request,  render_template
 from PIL import Image
 import torch
 import torchvision.transforms as transforms
+from torchvision import models
 
 
 app = Flask(__name__)
 
 # 加载模型
-model = torch.jit.load('model/best.pt')
+# model = torch.jit.load('model/best.pt')
+model = models.densenet121(pretrained=True)
 
 # 类别数组
 class_names = ['apple', 'banana']
